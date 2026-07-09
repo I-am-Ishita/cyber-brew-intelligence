@@ -9,38 +9,251 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AuthRegisterRouteImport } from './routes/auth.register'
+import { Route as AuthLoginRouteImport } from './routes/auth.login'
+import { Route as AuthForgotRouteImport } from './routes/auth.forgot'
+import { Route as AppTrendingRouteImport } from './routes/app.trending'
+import { Route as AppThreatsRouteImport } from './routes/app.threats'
+import { Route as AppSearchRouteImport } from './routes/app.search'
+import { Route as AppProfileRouteImport } from './routes/app.profile'
+import { Route as AppNewsRouteImport } from './routes/app.news'
+import { Route as AppCvesRouteImport } from './routes/app.cves'
+import { Route as AppBookmarksRouteImport } from './routes/app.bookmarks'
+import { Route as AppAssistantRouteImport } from './routes/app.assistant'
+import { Route as AppNewsIdRouteImport } from './routes/app.news.$id'
+import { Route as AppCvesIdRouteImport } from './routes/app.cves.$id'
 
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AuthRegisterRoute = AuthRegisterRouteImport.update({
+  id: '/auth/register',
+  path: '/auth/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthForgotRoute = AuthForgotRouteImport.update({
+  id: '/auth/forgot',
+  path: '/auth/forgot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppTrendingRoute = AppTrendingRouteImport.update({
+  id: '/trending',
+  path: '/trending',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppThreatsRoute = AppThreatsRouteImport.update({
+  id: '/threats',
+  path: '/threats',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSearchRoute = AppSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNewsRoute = AppNewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCvesRoute = AppCvesRouteImport.update({
+  id: '/cves',
+  path: '/cves',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBookmarksRoute = AppBookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssistantRoute = AppAssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNewsIdRoute = AppNewsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AppNewsRoute,
+} as any)
+const AppCvesIdRoute = AppCvesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AppCvesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/onboarding': typeof OnboardingRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/bookmarks': typeof AppBookmarksRoute
+  '/app/cves': typeof AppCvesRouteWithChildren
+  '/app/news': typeof AppNewsRouteWithChildren
+  '/app/profile': typeof AppProfileRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/threats': typeof AppThreatsRoute
+  '/app/trending': typeof AppTrendingRoute
+  '/auth/forgot': typeof AuthForgotRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
+  '/app/': typeof AppIndexRoute
+  '/app/cves/$id': typeof AppCvesIdRoute
+  '/app/news/$id': typeof AppNewsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/onboarding': typeof OnboardingRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/bookmarks': typeof AppBookmarksRoute
+  '/app/cves': typeof AppCvesRouteWithChildren
+  '/app/news': typeof AppNewsRouteWithChildren
+  '/app/profile': typeof AppProfileRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/threats': typeof AppThreatsRoute
+  '/app/trending': typeof AppTrendingRoute
+  '/auth/forgot': typeof AuthForgotRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
+  '/app': typeof AppIndexRoute
+  '/app/cves/$id': typeof AppCvesIdRoute
+  '/app/news/$id': typeof AppNewsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/onboarding': typeof OnboardingRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/bookmarks': typeof AppBookmarksRoute
+  '/app/cves': typeof AppCvesRouteWithChildren
+  '/app/news': typeof AppNewsRouteWithChildren
+  '/app/profile': typeof AppProfileRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/threats': typeof AppThreatsRoute
+  '/app/trending': typeof AppTrendingRoute
+  '/auth/forgot': typeof AuthForgotRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
+  '/app/': typeof AppIndexRoute
+  '/app/cves/$id': typeof AppCvesIdRoute
+  '/app/news/$id': typeof AppNewsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/onboarding'
+    | '/app/assistant'
+    | '/app/bookmarks'
+    | '/app/cves'
+    | '/app/news'
+    | '/app/profile'
+    | '/app/search'
+    | '/app/threats'
+    | '/app/trending'
+    | '/auth/forgot'
+    | '/auth/login'
+    | '/auth/register'
+    | '/app/'
+    | '/app/cves/$id'
+    | '/app/news/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/onboarding'
+    | '/app/assistant'
+    | '/app/bookmarks'
+    | '/app/cves'
+    | '/app/news'
+    | '/app/profile'
+    | '/app/search'
+    | '/app/threats'
+    | '/app/trending'
+    | '/auth/forgot'
+    | '/auth/login'
+    | '/auth/register'
+    | '/app'
+    | '/app/cves/$id'
+    | '/app/news/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/onboarding'
+    | '/app/assistant'
+    | '/app/bookmarks'
+    | '/app/cves'
+    | '/app/news'
+    | '/app/profile'
+    | '/app/search'
+    | '/app/threats'
+    | '/app/trending'
+    | '/auth/forgot'
+    | '/auth/login'
+    | '/auth/register'
+    | '/app/'
+    | '/app/cves/$id'
+    | '/app/news/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  OnboardingRoute: typeof OnboardingRoute
+  AuthForgotRoute: typeof AuthForgotRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthRegisterRoute: typeof AuthRegisterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +261,162 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/auth/register': {
+      id: '/auth/register'
+      path: '/auth/register'
+      fullPath: '/auth/register'
+      preLoaderRoute: typeof AuthRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/forgot': {
+      id: '/auth/forgot'
+      path: '/auth/forgot'
+      fullPath: '/auth/forgot'
+      preLoaderRoute: typeof AuthForgotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/trending': {
+      id: '/app/trending'
+      path: '/trending'
+      fullPath: '/app/trending'
+      preLoaderRoute: typeof AppTrendingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/threats': {
+      id: '/app/threats'
+      path: '/threats'
+      fullPath: '/app/threats'
+      preLoaderRoute: typeof AppThreatsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/search': {
+      id: '/app/search'
+      path: '/search'
+      fullPath: '/app/search'
+      preLoaderRoute: typeof AppSearchRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/news': {
+      id: '/app/news'
+      path: '/news'
+      fullPath: '/app/news'
+      preLoaderRoute: typeof AppNewsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/cves': {
+      id: '/app/cves'
+      path: '/cves'
+      fullPath: '/app/cves'
+      preLoaderRoute: typeof AppCvesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/bookmarks': {
+      id: '/app/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/app/bookmarks'
+      preLoaderRoute: typeof AppBookmarksRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/assistant': {
+      id: '/app/assistant'
+      path: '/assistant'
+      fullPath: '/app/assistant'
+      preLoaderRoute: typeof AppAssistantRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/news/$id': {
+      id: '/app/news/$id'
+      path: '/$id'
+      fullPath: '/app/news/$id'
+      preLoaderRoute: typeof AppNewsIdRouteImport
+      parentRoute: typeof AppNewsRoute
+    }
+    '/app/cves/$id': {
+      id: '/app/cves/$id'
+      path: '/$id'
+      fullPath: '/app/cves/$id'
+      preLoaderRoute: typeof AppCvesIdRouteImport
+      parentRoute: typeof AppCvesRoute
+    }
   }
 }
 
+interface AppCvesRouteChildren {
+  AppCvesIdRoute: typeof AppCvesIdRoute
+}
+
+const AppCvesRouteChildren: AppCvesRouteChildren = {
+  AppCvesIdRoute: AppCvesIdRoute,
+}
+
+const AppCvesRouteWithChildren =
+  AppCvesRoute._addFileChildren(AppCvesRouteChildren)
+
+interface AppNewsRouteChildren {
+  AppNewsIdRoute: typeof AppNewsIdRoute
+}
+
+const AppNewsRouteChildren: AppNewsRouteChildren = {
+  AppNewsIdRoute: AppNewsIdRoute,
+}
+
+const AppNewsRouteWithChildren =
+  AppNewsRoute._addFileChildren(AppNewsRouteChildren)
+
+interface AppRouteChildren {
+  AppAssistantRoute: typeof AppAssistantRoute
+  AppBookmarksRoute: typeof AppBookmarksRoute
+  AppCvesRoute: typeof AppCvesRouteWithChildren
+  AppNewsRoute: typeof AppNewsRouteWithChildren
+  AppProfileRoute: typeof AppProfileRoute
+  AppSearchRoute: typeof AppSearchRoute
+  AppThreatsRoute: typeof AppThreatsRoute
+  AppTrendingRoute: typeof AppTrendingRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAssistantRoute: AppAssistantRoute,
+  AppBookmarksRoute: AppBookmarksRoute,
+  AppCvesRoute: AppCvesRouteWithChildren,
+  AppNewsRoute: AppNewsRouteWithChildren,
+  AppProfileRoute: AppProfileRoute,
+  AppSearchRoute: AppSearchRoute,
+  AppThreatsRoute: AppThreatsRoute,
+  AppTrendingRoute: AppTrendingRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  OnboardingRoute: OnboardingRoute,
+  AuthForgotRoute: AuthForgotRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  AuthRegisterRoute: AuthRegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
